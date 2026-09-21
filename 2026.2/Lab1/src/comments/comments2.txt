@@ -1,0 +1,183 @@
+Q1)
+EXECUÇÃO 1:
+[main] --- INÍCIO DO PROGRAMA JAVA ---
+[main] Inicialização de tarefas concorrentes solicitada.
+[Thread-1] INÍCIO: Verificação de Recursos.
+[Thread-0] INÍCIO: Configuração de Logs...
+[main] --- FIM DO PROGRAMA JAVA (Main terminou) ---
+[Thread-1] Verificando Recurso 1 (Duração: 2190ms)...
+[Thread-1] Verificando Recurso 2 (Duração: 1643ms)...
+[Thread-1] Verificando Recurso 3 (Duração: 1075ms)...
+[Thread-0] FIM: Configuração de Logs concluída.
+[Thread-1] Verificando Recurso 4 (Duração: 2348ms)...
+[Thread-1] Verificando Recurso 5 (Duração: 1287ms)...
+[Thread-1] FIM: Verificação concluída.
+
+real    0m8.682s
+user    0m0.174s
+sys     0m0.065s
+
+EXECUÇÃO 2:
+[main] --- INÍCIO DO PROGRAMA JAVA ---
+[main] Inicialização de tarefas concorrentes solicitada.
+[Thread-0] INÍCIO: Configuração de Logs...
+[main] --- FIM DO PROGRAMA JAVA (Main terminou) ---
+[Thread-1] INÍCIO: Verificação de Recursos.
+[Thread-1] Verificando Recurso 1 (Duração: 2230ms)...
+[Thread-1] Verificando Recurso 2 (Duração: 1259ms)...
+[Thread-1] Verificando Recurso 3 (Duração: 1713ms)...
+[Thread-0] FIM: Configuração de Logs concluída.
+[Thread-1] Verificando Recurso 4 (Duração: 1457ms)...
+[Thread-1] Verificando Recurso 5 (Duração: 2196ms)...
+[Thread-1] FIM: Verificação concluída.
+
+real    0m8.994s
+user    0m0.154s
+sys     0m0.069s
+
+EXECUÇÃO 3:
+[main] --- INÍCIO DO PROGRAMA JAVA ---
+[main] Inicialização de tarefas concorrentes solicitada.
+[Thread-0] INÍCIO: Configuração de Logs...
+[Thread-1] INÍCIO: Verificação de Recursos.
+[main] --- FIM DO PROGRAMA JAVA (Main terminou) ---
+[Thread-1] Verificando Recurso 1 (Duração: 2225ms)...
+[Thread-1] Verificando Recurso 2 (Duração: 2173ms)...
+[Thread-0] FIM: Configuração de Logs concluída.
+[Thread-1] Verificando Recurso 3 (Duração: 2396ms)...
+[Thread-1] Verificando Recurso 4 (Duração: 1031ms)...
+[Thread-1] Verificando Recurso 5 (Duração: 2317ms)...
+[Thread-1] FIM: Verificação concluída.
+
+real    0m10.276s
+user    0m0.167s
+sys     0m0.068s
+
+EXEMPLO EXECUÇÃO SERIAL:
+[main] --- INÍCIO DO PROGRAMA SERIAL JAVA ---
+[main] INÍCIO: Configuração de Logs.
+[main] FIM: Configuração de Logs concluída.
+[main] INÍCIO: Verificação de Recursos.
+[main] Verificando Recurso 1 (Duração: 2263ms)...
+[main] Verificando Recurso 2 (Duração: 2378ms)...
+[main] Verificando Recurso 3 (Duração: 1782ms)...
+[main] Verificando Recurso 4 (Duração: 2714ms)...
+[main] Verificando Recurso 5 (Duração: 2525ms)...
+[main] FIM: Verificação concluída.
+[main] --- FIM DO PROGRAMA SERIAL JAVA ---
+
+real    0m15.804s
+user    0m0.205s
+sys     0m0.071s
+
+Analisando os exemplos de execução acima e o código de ambas as soluções, serial e concorrente,
+podemos observar que as principais diferenças entre elas são a ordem de execução das sub-etapas e o tempo médio de execução.
+A solução concorrente apresenta ordens diferentes a depender das decisões de escalonamento e do tempo de verificação de cada recurso,
+os exemplos acima mostram isso dado que no exemplo de execução 1 a configuração de logs encerra durante a verificação do recurso 3,
+e no exemplo de execução 3, a configuração encerra durante a verificação do recurso 2.
+E, em comparação com a solução serial, nos exemplos, o "fim do programa" aparece antes do fim das tarefas, aparecendo até antes do início da verificação em um dos casos.
+Além disso, o tempo de execução médio diminuiu bastante em relação à solução serial, devido à concorrência utilizada entre as duas tarefas.
+
+
+Q2)
+A nomeação de threads facilitou a depuração do código, explicitando de forma mais clara qual thread está executando cada tarefa, mas não houve nenhuma mudança no comportamento geral da solução.
+
+
+Q3)
+EXECUÇÃO 1:
+[main] --- INÍCIO DO PROGRAMA JAVA ---
+[main] Inicialização de tarefas concorrentes solicitada.
+[Check-Recursos] INÍCIO: Verificação de Recursos.
+[main] --- FIM DO PROGRAMA JAVA (Main terminou) ---
+[Setup-Logs] INÍCIO: Configuração de Logs...
+[Check-Recursos] Verificando Recurso 1 (Duração: 2310ms)...
+[Check-Recursos] Verificando Recurso 2 (Duração: 1611ms)...
+[Check-Recursos] Verificando Recurso 3 (Duração: 1553ms)...
+[Setup-Logs] FIM: Configuração de Logs concluída.
+[Check-Recursos] Verificando Recurso 4 (Duração: 1753ms)...
+[Check-Recursos] Verificando Recurso 5 (Duração: 2603ms)...
+[Check-Recursos] FIM: Verificação concluída.
+
+real    0m9.975s
+user    0m0.170s
+sys     0m0.065s
+
+EXECUÇÃO 2:
+[main] --- INÍCIO DO PROGRAMA JAVA ---
+[main] Inicialização de tarefas concorrentes solicitada.
+[Check-Recursos] INÍCIO: Verificação de Recursos.
+[Setup-Logs] INÍCIO: Configuração de Logs...
+[main] --- FIM DO PROGRAMA JAVA (Main terminou) ---
+[Check-Recursos] Verificando Recurso 1 (Duração: 2866ms)...
+[Check-Recursos] Verificando Recurso 2 (Duração: 1198ms)...
+[Setup-Logs] FIM: Configuração de Logs concluída.
+[Check-Recursos] Verificando Recurso 3 (Duração: 1522ms)...
+[Check-Recursos] Verificando Recurso 4 (Duração: 2251ms)...
+[Check-Recursos] Verificando Recurso 5 (Duração: 2881ms)...
+[Check-Recursos] FIM: Verificação concluída.
+
+real    0m10.844s
+user    0m0.155s
+sys     0m0.069s
+
+Observando os exemplos de execução, observa-se que a thread main é sempre a primeira a iniciar, dado que ela que cria as outras threads, mas, nos exemplos,
+ela é a primeira a finalizar, até mesmo acabando, no exemplo 1, antes do início da configuração dos logs, já que ela não espera a finalização das demais threads.
+
+
+Q4)
+EXECUÇÃO 1:
+[main] --- INÍCIO DO PROGRAMA JAVA ---
+[main] Inicialização de tarefas concorrentes solicitada.
+[Setup-Logs] INÍCIO: Configuração de Logs...
+[Check-Recursos] INÍCIO: Verificação de Recursos.
+[Check-Recursos] Verificando Recurso 1 (Duração: 2870ms)...
+[Check-Recursos] Verificando Recurso 2 (Duração: 2570ms)...
+[Setup-Logs] FIM: Configuração de Logs concluída.
+[Check-Recursos] Verificando Recurso 3 (Duração: 2521ms)...
+[Check-Recursos] Verificando Recurso 4 (Duração: 1405ms)...
+[Check-Recursos] Verificando Recurso 5 (Duração: 2968ms)...
+[Check-Recursos] FIM: Verificação concluída.
+[main] --- FIM DO PROGRAMA JAVA (Main terminou) ---
+
+real    0m12.473s
+user    0m0.178s
+sys     0m0.071s
+
+EXECUÇÃO 2:
+[main] --- INÍCIO DO PROGRAMA JAVA ---
+[main] Inicialização de tarefas concorrentes solicitada.
+[Check-Recursos] INÍCIO: Verificação de Recursos.
+[Setup-Logs] INÍCIO: Configuração de Logs...
+[Check-Recursos] Verificando Recurso 1 (Duração: 1449ms)...
+[Check-Recursos] Verificando Recurso 2 (Duração: 2257ms)...
+[Check-Recursos] Verificando Recurso 3 (Duração: 1354ms)...
+[Setup-Logs] FIM: Configuração de Logs concluída.
+[Check-Recursos] Verificando Recurso 4 (Duração: 1458ms)...
+[Check-Recursos] Verificando Recurso 5 (Duração: 2043ms)...
+[Check-Recursos] FIM: Verificação concluída.
+[main] --- FIM DO PROGRAMA JAVA (Main terminou) ---
+
+real    0m8.697s
+user    0m0.161s
+sys     0m0.066s
+
+EXECUÇÃO 3:
+[main] --- INÍCIO DO PROGRAMA JAVA ---
+[main] Inicialização de tarefas concorrentes solicitada.
+[Check-Recursos] INÍCIO: Verificação de Recursos.
+[Setup-Logs] INÍCIO: Configuração de Logs...
+[Check-Recursos] Verificando Recurso 1 (Duração: 2282ms)...
+[Check-Recursos] Verificando Recurso 2 (Duração: 1323ms)...
+[Check-Recursos] Verificando Recurso 3 (Duração: 2769ms)...
+[Setup-Logs] FIM: Configuração de Logs concluída.
+[Check-Recursos] Verificando Recurso 4 (Duração: 2358ms)...
+[Check-Recursos] Verificando Recurso 5 (Duração: 2318ms)...
+[Check-Recursos] FIM: Verificação concluída.
+[main] --- FIM DO PROGRAMA JAVA (Main terminou) ---
+
+real    0m11.187s
+user    0m0.169s
+sys     0m0.073s
+
+O fluxo foi alterado, agora, como observado nos exemplos de execução, a thread main ("FIM DO PROGRAMA JAVA") termina no final da execução geral do programa,
+isso se dá pois agora a thread main aguarda as 2 threads de tarefas finalizarem.

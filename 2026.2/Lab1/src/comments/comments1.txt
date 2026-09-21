@@ -1,0 +1,68 @@
+A ordem de execução da solução serial não muda ao longo de várias execuções, como pode-se ver nos logs abaixo:
+
+EXECUÇÃO 1:
+[main] --- INÍCIO DO PROGRAMA SERIAL JAVA ---
+[main] INÍCIO: Configuração de Logs.
+[main] FIM: Configuração de Logs concluída.
+[main] INÍCIO: Verificação de Recursos.
+[main] Verificando Recurso 1 (Duração: 2263ms)...
+[main] Verificando Recurso 2 (Duração: 2378ms)...
+[main] Verificando Recurso 3 (Duração: 1782ms)...
+[main] Verificando Recurso 4 (Duração: 2714ms)...
+[main] Verificando Recurso 5 (Duração: 2525ms)...
+[main] FIM: Verificação concluída.
+[main] --- FIM DO PROGRAMA SERIAL JAVA ---
+
+real    0m15.804s
+user    0m0.205s
+sys     0m0.071s
+
+EXECUÇÃO 2:
+[main] --- INÍCIO DO PROGRAMA SERIAL JAVA ---
+[main] INÍCIO: Configuração de Logs.
+[main] FIM: Configuração de Logs concluída.
+[main] INÍCIO: Verificação de Recursos.
+[main] Verificando Recurso 1 (Duração: 1625ms)...
+[main] Verificando Recurso 2 (Duração: 2657ms)...
+[main] Verificando Recurso 3 (Duração: 1426ms)...
+[main] Verificando Recurso 4 (Duração: 2069ms)...
+[main] Verificando Recurso 5 (Duração: 1481ms)...
+[main] FIM: Verificação concluída.
+[main] --- FIM DO PROGRAMA SERIAL JAVA ---
+
+real    0m13.397s
+user    0m0.186s
+sys     0m0.063s
+
+EXECUÇÃO 3:
+[main] --- INÍCIO DO PROGRAMA SERIAL JAVA ---
+[main] INÍCIO: Configuração de Logs.
+[main] FIM: Configuração de Logs concluída.
+[main] INÍCIO: Verificação de Recursos.
+[main] Verificando Recurso 1 (Duração: 2560ms)...
+[main] Verificando Recurso 2 (Duração: 1495ms)...
+[main] Verificando Recurso 3 (Duração: 1075ms)...
+[main] Verificando Recurso 4 (Duração: 2819ms)...
+[main] Verificando Recurso 5 (Duração: 2706ms)...
+[main] FIM: Verificação concluída.
+[main] --- FIM DO PROGRAMA SERIAL JAVA ---
+
+real    0m14.825s
+user    0m0.209s
+sys     0m0.088s
+
+Podemos ver que a ordem das sub-etapas não muda, seguindo a ordem:
+- início do programa
+- início da configuração dos logs
+- fim da configuração dos logs
+- início da verificação de recursos
+- verificação dos recursos 1 a 5, de forma sequencial e ordenada
+- fim da verificação
+- fim do programa
+
+Isso vai de acordo com o que se espera da solução serial, já que o código chama executeLogSetup() antes de executeResourceCheck() e não há concorrência.
+
+Analisando o código, vemos que a configuração dos logs tem um tempo fixo de 4 segundos, e que cada verificação de recurso varia de 1 a 3 segundos, tendo 5 verificações ao todo.
+Com isso, o tempo mínimo de execução é aproximadamente 9 segundos (4 segundos dos logs + 5*1 segundos de cada recurso)
+e o tempo máximo é de aproximadamente 19 segundos (4 segundos dos logs + 5*3 segundos de cada recurso).
+Esses valores são aproximados pois desconsideram o pequeno tempo de execução de outras operações, como prints e inicializações de threads.
