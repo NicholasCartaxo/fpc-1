@@ -1,0 +1,4 @@
+Sim, houve compartilhamento de memória entre as threads filhas e mãe, elas compartilham a instância de Classes, acessando o registro de notas, os professores e o vetor de maiores notas concorrentemente.
+Mas não há condição de corrida pois cada thread manipula exclusivamente uma única classe, e, mesmo threads diferentes podendo acessar o mesmo estudante em get_students_in_class, como nessa função há apenas leitura, continua não havendo condição de corrida.
+Como dito anteriormente, não há atualização do mesmo espaço na memória concorrentemente, pois as atualizações feitas por uma thread são exclusivas de uma única classe.
+Assim, não há problemas na solução desenvolvida, as manipulações não compartilham memória e o compartilhamento de memória existente é apenas de leitura.

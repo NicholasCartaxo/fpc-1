@@ -1,0 +1,160 @@
+Python:
+▶️ Rodando versão SERIAL...
+======================= Welcome to 2025.2's UFCG Semester =======================
+
+Prof1's class (1) — starting grading...
+Prof1 corrected Student 1 from class 1 - Grade: 4.91
+Prof1 corrected Student 2 from class 1 - Grade: 5.20
+Prof1 corrected Student 3 from class 1 - Grade: 2.71
+Prof1 corrected Student 4 from class 1 - Grade: 5.69
+Prof1's class 1 grades successfully processed!
+
+
+Prof2's class (2) — starting grading...
+Prof2 corrected Student 5 from class 2 - Grade: 8.50
+Prof2 corrected Student 6 from class 2 - Grade: 4.43
+Prof2 corrected Student 7 from class 2 - Grade: 6.55
+Prof2 corrected Student 8 from class 2 - Grade: 5.40
+Prof2's class 2 grades successfully processed!
+
+
+Prof1's class (3) — starting grading...
+Prof1 corrected Student 9 from class 3 - Grade: 4.39
+Prof1 corrected Student 10 from class 3 - Grade: 8.37
+Prof1 corrected Student 11 from class 3 - Grade: 2.90
+Prof1 corrected Student 12 from class 3 - Grade: 5.47
+Prof1's class 3 grades successfully processed!
+
+
+Prof2's class (4) — starting grading...
+Prof2 corrected Student 13 from class 4 - Grade: 1.51
+Prof2 corrected Student 14 from class 4 - Grade: 5.19
+Prof2 corrected Student 15 from class 4 - Grade: 6.52
+Prof2 corrected Student 16 from class 4 - Grade: 3.43
+Prof2's class 4 grades successfully processed!
+
+
+Prof1's class (5) — starting grading...
+Prof1 corrected Student 17 from class 5 - Grade: 6.46
+Prof1 corrected Student 18 from class 5 - Grade: 6.97
+Prof1 corrected Student 19 from class 5 - Grade: 7.05
+Prof1 corrected Student 20 from class 5 - Grade: 2.92
+Prof1's class 5 grades successfully processed!
+
+
+*********** Prof1's Class 1***********
+student_id: 1, class_id: 1, final_grade: 4.91
+student_id: 2, class_id: 1, final_grade: 5.20
+student_id: 3, class_id: 1, final_grade: 2.71
+student_id: 4, class_id: 1, final_grade: 5.69
+
+*********** Prof2's Class 2***********
+student_id: 5, class_id: 2, final_grade: 8.50
+student_id: 6, class_id: 2, final_grade: 4.43
+student_id: 7, class_id: 2, final_grade: 6.55
+student_id: 8, class_id: 2, final_grade: 5.40
+
+*********** Prof1's Class 3***********
+student_id: 9, class_id: 3, final_grade: 4.39
+student_id: 10, class_id: 3, final_grade: 8.37
+student_id: 11, class_id: 3, final_grade: 2.90
+student_id: 12, class_id: 3, final_grade: 5.47
+
+*********** Prof2's Class 4***********
+student_id: 13, class_id: 4, final_grade: 1.51
+student_id: 14, class_id: 4, final_grade: 5.19
+student_id: 15, class_id: 4, final_grade: 6.52
+student_id: 16, class_id: 4, final_grade: 3.43
+
+*********** Prof1's Class 5***********
+student_id: 17, class_id: 5, final_grade: 6.46
+student_id: 18, class_id: 5, final_grade: 6.97
+student_id: 19, class_id: 5, final_grade: 7.05
+student_id: 20, class_id: 5, final_grade: 2.92
+======================= The End =======================
+
+real    0m14.916s
+user    0m0.001s
+sys     0m0.010s
+
+
+C:
+▶️  Rodando versão SERIAL...
+======================= Welcome to 2025.2's UFCG Semester =======================
+
+Prof1's class (1) — starting grading...
+Prof1 corrected Student 1 from class 1 - Grade: 8.32
+Prof1 corrected Student 2 from class 1 - Grade: 5.96
+Prof1 corrected Student 3 from class 1 - Grade: 6.62
+Prof1 corrected Student 4 from class 1 - Grade: 2.01
+Prof1's class 1 grades successfully processed!
+
+
+Prof2's class (2) — starting grading...
+Prof2 corrected Student 5 from class 2 - Grade: 5.47
+Prof2 corrected Student 6 from class 2 - Grade: 8.40
+Prof2 corrected Student 7 from class 2 - Grade: 3.88
+Prof2 corrected Student 8 from class 2 - Grade: 8.14
+Prof2's class 2 grades successfully processed!
+
+
+Prof1's class (3) — starting grading...
+Prof1 corrected Student 9 from class 3 - Grade: 5.30
+Prof1 corrected Student 10 from class 3 - Grade: 1.02
+Prof1 corrected Student 11 from class 3 - Grade: 7.77
+Prof1 corrected Student 12 from class 3 - Grade: 7.81
+Prof1's class 3 grades successfully processed!
+
+
+Prof2's class (4) — starting grading...
+Prof2 corrected Student 13 from class 4 - Grade: 8.80
+Prof2 corrected Student 14 from class 4 - Grade: 7.60
+Prof2 corrected Student 15 from class 4 - Grade: 4.79
+Prof2 corrected Student 16 from class 4 - Grade: 7.31
+Prof2's class 4 grades successfully processed!
+
+
+Prof1's class (5) — starting grading...
+Prof1 corrected Student 17 from class 5 - Grade: 6.09
+Prof1 corrected Student 18 from class 5 - Grade: 9.46
+Prof1 corrected Student 19 from class 5 - Grade: 8.54
+Prof1 corrected Student 20 from class 5 - Grade: 5.59
+Prof1's class 5 grades successfully processed!
+
+
+*********** Prof1's Class 1 ***********
+student_id: 1, class_id: 1, final_grade: 8.32
+student_id: 2, class_id: 1, final_grade: 5.96
+student_id: 3, class_id: 1, final_grade: 6.62
+student_id: 4, class_id: 1, final_grade: 2.01
+
+*********** Prof2's Class 2 ***********
+student_id: 5, class_id: 2, final_grade: 5.47
+student_id: 6, class_id: 2, final_grade: 8.40
+student_id: 7, class_id: 2, final_grade: 3.88
+student_id: 8, class_id: 2, final_grade: 8.14
+
+*********** Prof1's Class 3 ***********
+student_id: 9, class_id: 3, final_grade: 5.30
+student_id: 10, class_id: 3, final_grade: 1.02
+student_id: 11, class_id: 3, final_grade: 7.77
+student_id: 12, class_id: 3, final_grade: 7.81
+
+*********** Prof2's Class 4 ***********
+student_id: 13, class_id: 4, final_grade: 8.80
+student_id: 14, class_id: 4, final_grade: 7.60
+student_id: 15, class_id: 4, final_grade: 4.79
+student_id: 16, class_id: 4, final_grade: 7.31
+
+*********** Prof1's Class 5 ***********
+student_id: 17, class_id: 5, final_grade: 6.09
+student_id: 18, class_id: 5, final_grade: 9.46
+student_id: 19, class_id: 5, final_grade: 8.54
+student_id: 20, class_id: 5, final_grade: 5.59
+======================= The End =======================
+
+real    0m14.202s
+user    0m0.087s
+sys     0m0.026s
+
+Ao longo das várias execuções nas duas linguagens, a ordem de execução das correções continua a mesma, as correções são feitas em ordem crescente de classe sem concorrência.

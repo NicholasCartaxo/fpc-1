@@ -18,6 +18,7 @@ class Classes:
         self.num_students_per_class: int = num_students_per_class
 
         self.semester_registry: Dict[str, Dict[str, Optional[Any]]] = self._generate_semester_registry()
+        self.class_max_grades : List[float] = [0.0]*num_classes
 
     def _generate_student_grade(self) -> str:
         return f"{random.random() * 10:0.2f}"
@@ -56,6 +57,8 @@ class Classes:
 
             grade = self._generate_student_grade()
             self.semester_registry[student_id]["final_grade"] = grade
+            if float(grade) > self.class_max_grades[class_id-1]:
+                self.class_max_grades[class_id-1] = float(grade)
 
             print(f"{professor} corrected Student {student_id} from class {class_id} - Grade: {grade}")
             time.sleep(random.uniform(0.1, 0.3))
@@ -67,6 +70,7 @@ class Classes:
         their_alumni = self.get_students_in_class(class_id)
 
         print(f"\n*********** {professor}'s Class {class_id} ***********")
+        print(f"Max grade: {self.class_max_grades[class_id-1]:0.2f}")
         for student_id in their_alumni:
             print(
                 f"student_id: {student_id}, "
@@ -92,6 +96,7 @@ if __name__ == "__main__":
 
     for class_id in semester.class_ids:
         t = threading.Thread(target=semester.process_grades, args=(class_id,))
+        t.start()
         threads.append(t)
     
     for t in threads:
