@@ -1,9 +1,44 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.Semaphore;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
 public class DnaConcurrentMain {
+
+    private static long total;
+    private static Semaphore mutex;
+
+    public static class DnaTask implements Runnable {
+
+        private File file;
+        private String pattern;
+
+        public DnaTask(File file, String pattern) {
+            this.file = file;
+            this.pattern = pattern;
+        }
+
+        @Override
+        public void run() {
+            long t = 0;
+
+            try {
+                t = countInFile(file, pattern);
+            } catch (IOException e) {
+                System.err.println(Thread.currentThread().getName + ": Erro ao ler arquivo " + file.getName() + ": "
+                        + e.getMessage());
+            }
+
+            try {
+                mutex.acquire();
+                total += t;
+                mutex.release();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
 
     public static void main(String[] args) {
         if (args.length < 2) {
@@ -27,20 +62,26 @@ public class DnaConcurrentMain {
             System.exit(3);
         }
 
-        try {
-            long total = 0;
-            
-	    for (File f : files) {
-                total += countInFile(f, pattern);
-            }
+        total = 0;
+        mutex = new Semaphore(1);
 
-	    System.out.println("Sequência " + pattern + " foi encontrada " + total + " vezes.");
-        } catch (IOException e) {
-            System.err.println("Erro ao ler arquivos: " + e.getMessage());
-            System.exit(4);
+        Thread[] threads = new Thread[files.length];
+        for (int i = 0; i < threads.length; i++) {
+            threads[i] = new Thread(new DnaTask(files[i], pattern), "dna-task-" + i);
+            threads[i].start();
         }
-    }
 
+        try {
+            for (int i = 0; i < threads.length; i++) {
+                threads[i].join();
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        System.out.println("Sequência " + pattern + " foi encontrada " + total + " vezes.");
+
+    }
 
     public static long countInFile(File file, String pattern) throws IOException {
         long total = 0;
@@ -48,20 +89,20 @@ public class DnaConcurrentMain {
             String line;
             while ((line = br.readLine()) != null) {
                 line = line.trim();
-                
-		// simulando delay de processamento
-		try {
-             	   Thread.sleep(10);
-           	} catch (InterruptedException e) {
-                   Thread.currentThread().interrupt();
+
+                // simulando delay de processamento
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
                 }
 
-		if (!line.isEmpty()) {
+                if (!line.isEmpty()) {
                     total += countInSequence(line, pattern);
                 }
             }
         }
-        return total;    
+        return total;
     }
 
     public static long countInSequence(String sequence, String pattern) {
