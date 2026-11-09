@@ -1,0 +1,46 @@
+Execução serial 1 jotinha_noise.jpg:
+real    0m24.784s
+user    0m25.039s
+sys     0m0.390s
+
+Execução serial 2 jotinha_noise.jpg:
+real    0m26.925s
+user    0m26.864s
+sys     0m0.466s
+
+Em média, a execução serial para essa imagem demora 25 segundos.
+
+Execução concorrente jotinha_noise.jpg 2 threads:
+real    0m14.662s
+user    0m28.202s
+sys     0m0.381s
+
+Execução concorrente jotinha_noise.jpg 16 threads:
+real    0m8.606s
+user    0m29.239s
+sys     0m0.474s
+
+Execução concorrente jotinha_noise.jpg 32 threads:
+real    0m8.776s
+user    0m30.249s
+sys     0m0.608s
+
+Execução concorrente jotinha_noise.jpg 128 threads:
+real    0m9.296s
+user    0m32.387s
+sys     0m0.671s
+
+Execução concorrente jotinha_noise.jpg 4096 threads:
+real    0m11.148s
+user    0m33.000s
+sys     0m1.345s
+
+Execução concorrente jotinha_noise.jpg 65536 threads:
+real    0m18.412s
+user    0m36.342s
+sys     0m8.043s
+
+Para a solução concorrente, podemos ver que, para as quantidades de threads testadas, o tempo total do programa é bem menor que o da solução serial.
+Mas, percebemos que algo em torno de 16 e 32 threads resultou no menor tempo possível, execuções com muitas threads, como 4096, além de demorarem mais,
+também tem um tempo maior utilizando a CPU, isso se dá pelo maior overhead de criação de threads, sem aumentar a concorrência, já que a solução delega
+apenas linhas completas para as threads, então, com mais threads do que linhas (4000 linhas), algumas threads se tornam ociosas.
